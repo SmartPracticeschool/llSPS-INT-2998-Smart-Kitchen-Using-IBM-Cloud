@@ -3,6 +3,15 @@ Smart Kitchen Using IBM Cloud
 
 I have uploaded all the items related to my project in this repository.
 
+As we are not using actual hardware to get real time values, we are coding our software in such a way that in a given scenario, we consider all the possible outputs of our device.
+1)Cylinder status, from full to empty
+2)Jar status, from full to empty
+3)If gas leakage is detected or not.
+4)If the exhaust fan is turned on or not.
+
+All the images in the folder "Mobile app images.pdf" and "nodered images.pdf" consider all of these outputs and can be observed.
+Fast2SMS image contains the sms alert of all three situations.
+
 MyFile.ipynb contains the python code that was used to connect the device to the IBM platform and program the device simulation.
 
 Flow.json contains the json code for the node RED flow. You can import the flow from this file.
