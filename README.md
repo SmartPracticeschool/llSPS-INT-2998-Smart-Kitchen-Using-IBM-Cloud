@@ -17,6 +17,8 @@ As we are not using actual hardware to get real time values, we are coding our s
 All the images in the folder "Mobile app images.pdf" and "nodered images.pdf" consider all of these outputs and can be observed.
 Fast2SMS image contains the sms alert of all three situations.
 
+IBM IOT PLATFORM BOARD OUTPUTS.pdf file contains the graphs and sensor boards value in the IBM IOT platform.
+
 MyFile.ipynb contains the python code that was used to connect the device to the IBM platform and program the device simulation.
 
 Flow.json contains the json code for the node RED flow. You can import the flow from this file.
