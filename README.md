@@ -31,3 +31,4 @@ Unfortunately when we were explaining the app working, the screen wasnt shared i
 Mobile app working demonstration link: https://www.youtube.com/watch?v=33PS-bvJrE8&t=23s
 
 Node red UI link : https://node-red-suecq.eu-gb.mybluemix.net/ui/#!/0?socketid=ig_JxR4E7hhlt-ieAAIV
+NODE RED LINK: https://node-red-suecq.eu-gb.mybluemix.net/red/#flow/600afed6.9bbbd
