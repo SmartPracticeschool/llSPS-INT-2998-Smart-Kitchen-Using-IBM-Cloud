@@ -1,0 +1,455 @@
+[
+    {
+        "id": "600afed6.9bbbd",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3756272f.d133f8",
+        "type": "debug",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 710,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f2f837cd.869568",
+        "type": "ibmiot in",
+        "z": "600afed6.9bbbd",
+        "authentication": "apiKey",
+        "apiKey": "857e7ad0.9e65f8",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "123456",
+        "applicationId": "",
+        "deviceType": "RaspberryPi",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "18a9b9b9.440e46",
+                "a51801d9.96dda",
+                "3756272f.d133f8",
+                "dfb6b71c.e13998",
+                "76b5423c.33d19c",
+                "8d3a73c6.77782",
+                "d25b01bf.25f76"
+            ]
+        ]
+    },
+    {
+        "id": "8cef6b9.fe32098",
+        "type": "ui_gauge",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "group": "45e19a37.9354e4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Cylinder_weight",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "15",
+        "colors": [
+            "#b31800",
+            "#e6e600",
+            "#57ca3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 720,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "789690c0.15675",
+        "type": "ui_gauge",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "group": "805fca1b.089668",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "JAR_WEIGHT",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1500",
+        "colors": [
+            "#b30f00",
+            "#e6e600",
+            "#63ca3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 720,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "18a9b9b9.440e46",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "cylinder_weight",
+        "func": "global.set('Cylinder_weight',msg.payload.cylinder_weight)\nmsg.payload=msg.payload.cylinder_weight\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            [
+                "8cef6b9.fe32098",
+                "3756272f.d133f8",
+                "e166188b.a68288"
+            ]
+        ]
+    },
+    {
+        "id": "a51801d9.96dda",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "JAR_WEIGHT",
+        "func": "global.set('jar_weight',msg.payload.jar_weight)\nmsg.payload=msg.payload.jar_weight\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "789690c0.15675",
+                "3756272f.d133f8",
+                "b8b285b1.29af38"
+            ]
+        ]
+    },
+    {
+        "id": "be93b0ab.775fc",
+        "type": "ui_text",
+        "z": "600afed6.9bbbd",
+        "group": "45e19a37.9354e4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Cylinder Status : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 720,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f6e0f8ae.db6628",
+        "type": "ui_text",
+        "z": "600afed6.9bbbd",
+        "group": "805fca1b.089668",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Jar status :",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "dfb6b71c.e13998",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "Cylinder Status",
+        "func": "global.set('cylinder_Status',msg.payload.status)\nmsg.payload=msg.payload.status\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "be93b0ab.775fc",
+                "3756272f.d133f8"
+            ]
+        ]
+    },
+    {
+        "id": "76b5423c.33d19c",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "Jar status",
+        "func": "global.set('jar_status',msg.payload.jar_status)\nmsg.payload=msg.payload.jar_status\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 300,
+        "wires": [
+            [
+                "f6e0f8ae.db6628",
+                "3756272f.d133f8"
+            ]
+        ]
+    },
+    {
+        "id": "8d3a73c6.77782",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "Leakage",
+        "func": "global.set('leak',msg.payload.leak)\nmsg.payload=msg.payload.leak\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 40,
+        "wires": [
+            [
+                "44ff9851.945748",
+                "3756272f.d133f8"
+            ]
+        ]
+    },
+    {
+        "id": "44ff9851.945748",
+        "type": "ui_text",
+        "z": "600afed6.9bbbd",
+        "group": "45e19a37.9354e4",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Gas Leakage: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 720,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b86a1410.c92898",
+        "type": "http in",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "url": "/data",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "77d65505.0fb62c"
+            ]
+        ]
+    },
+    {
+        "id": "94230dc6.0eb92",
+        "type": "http response",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 750,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "77d65505.0fb62c",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "data",
+        "func": "msg.payload={'Cylinder Weight':global.get(\"Cylinder_weight\"),\n'Cylinder status':global.get(\"cylinder_Status\"),\n'Leakage':global.get(\"leak\"),\n'Jar weight':global.get(\"jar_weight\"),\n'Jar status':global.get(\"jar_status\"),\n'Fan status':global.get(\"FAN\")}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 460,
+        "wires": [
+            [
+                "94230dc6.0eb92"
+            ]
+        ]
+    },
+    {
+        "id": "d25b01bf.25f76",
+        "type": "function",
+        "z": "600afed6.9bbbd",
+        "name": "FAN",
+        "func": "global.set('FAN',msg.payload.FAN_STATUS)\nmsg.payload=msg.payload.FAN_STATUS\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 360,
+        "wires": [
+            [
+                "9f3e7047.b0482",
+                "3756272f.d133f8"
+            ]
+        ]
+    },
+    {
+        "id": "9f3e7047.b0482",
+        "type": "ui_text",
+        "z": "600afed6.9bbbd",
+        "group": "805fca1b.089668",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fan Status : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "x": 730,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "e166188b.a68288",
+        "type": "ui_chart",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "group": "45e19a37.9354e4",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Cylinder Weight",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "15",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ba1212",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8b285b1.29af38",
+        "type": "ui_chart",
+        "z": "600afed6.9bbbd",
+        "name": "",
+        "group": "805fca1b.089668",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Jar weight",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1600",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#18496d",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 730,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "857e7ad0.9e65f8",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "45e19a37.9354e4",
+        "type": "ui_group",
+        "z": "",
+        "name": "cylinder",
+        "tab": "cec970f7.87c2",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "805fca1b.089668",
+        "type": "ui_group",
+        "z": "",
+        "name": "Jar",
+        "tab": "cec970f7.87c2",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "cec970f7.87c2",
+        "type": "ui_tab",
+        "z": "",
+        "name": "SMART KITCHEN",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
