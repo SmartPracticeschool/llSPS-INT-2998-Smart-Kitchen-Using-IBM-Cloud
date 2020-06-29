@@ -24,7 +24,7 @@ SMART KITCHEN USING IBM CLOUD contains the report of our project.
 Mobile app images.pdf contains the images of our app working in different scenario.
 nodered images.pdf contains the images of our node RED ui dashboard images working in different scenarios.
 
-The YOUTUBE LINK to our project : https://www.youtube.com/watch?v=26DukE2Zt4E&t=538s 
+The YOUTUBE LINK to our project : https://www.youtube.com/watch?v=26DukE2Zt4E&t=538s
 
 Unfortunately when we were explaining the app working, the screen wasnt shared in the video. Hence a separate video on that is made.
 
